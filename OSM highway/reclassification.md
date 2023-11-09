@@ -96,7 +96,7 @@ osmosis ^
   --tf reject-ways ^
     area=yes ^
     access=private ^
-    highway= abandoned,bridleway,bus_guideway,construction,corridor,cycleway,elevator,escalator,footway,path,pedestrian,planned,platform,proposed,raceway,service,steps,track ^
+    highway=abandoned,bridleway,bus_guideway,construction,corridor,cycleway,elevator,escalator,footway,path,pedestrian,planned,platform,proposed,raceway,service,steps,track ^
     motor_vehicle=no ^
     motorcar=no ^
     service=alley,driveway,emergency_access,parking,parking_aisle,private ^
