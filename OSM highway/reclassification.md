@@ -69,7 +69,8 @@ to download all ways, just filter out everything not currently in use or that is
 ["highway"]
 ["area"!~"yes"]
 ["highway"!~"abandoned|bus_guideway|construction|corridor|elevator|escalator|footway|motor|no|planned|platform|proposed|raceway|razed|steps"]
-["bicycle"!~"no"]["service"!~"private"]
+["bicycle"!~"no"]
+["service"!~"private"]
 ```
 
 ####  (6) `network_type='walk'`
@@ -80,7 +81,8 @@ to download all ways, just filter out everything not currently in use or that is
 ["highway"]
 ["area"!~"yes"]
 ["highway"!~"abandoned|bus_guideway|construction|cycleway|motor|no|planned|platform|proposed|raceway|razed"]'
-["foot"!~"no"]["service"!~"private"]'
+["foot"!~"no"]
+["service"!~"private"]'
 ```
 
 ## 1.2 Extract by `osmosis` Tool
