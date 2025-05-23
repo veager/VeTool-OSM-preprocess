@@ -1,12 +1,10 @@
-# Extract Highway
+# OSM Highway
 
 
+# 1. `OSMnx`
 
-# 1. Extraction
-
-## 1.1 Road Network Type
-
-Refer to [OSMnx](https://osmnx.readthedocs.io/en/stable/) Package, in the built-in function [_get_osm_filter()](https://github.com/gboeing/osmnx/blob/ef5d465448b1097a89615bd2bbaa3546a54e0f6b/osmnx/_overpass.py#L18), including six network types:
+Refer to [OSMnx](https://osmnx.readthedocs.io/en/stable/) Package, in the built-in function [osmnx
+._overpass._get_osm_filter()](https://github.com/gboeing/osmnx/blob/ef5d465448b1097a89615bd2bbaa3546a54e0f6b/osmnx/_overpass.py#L18), including six network types:
 
 - all
 - all_private

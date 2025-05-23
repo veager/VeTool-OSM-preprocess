@@ -47,6 +47,10 @@ Use `osmium extract` to clip an OSM file to a boundary defined by a bounding box
 osmium extract --config CONFIG-FILE [OPTIONS] INPUT.osm.pbf
 osmium extract --bbox LEFT,BOTTOM,RIGHT,TOP [OPTIONS] INPUT.osm.pbf
 osmium extract --polygon POLYGON-FILE [OPTIONS] INPUT.osm.pbf
+
+% print help document
+osmium extract --help
+osmium extract -h
 ```
 
 #### (2) Examples and arguments
@@ -105,7 +109,71 @@ osmium extract ^
 | **Notes**                  | Works with STDIN/STDOUT                                                    | Requires two passes; use `--with-history` to include full version history of matching objects                                    | Default for relations tagged `type=multipolygon`; configurable via `-S types...`. <br> E.g., `-S types=any` for all relation types, `-S types=multipolygon,route` for particular types. |
 
 
-## 2.3 Filtering OSM data by time
+## 2.3 Tags filtering
+
+#### (1) Core commands
+
+Use `osmium tags-filter` to include or exclude OSM objects based on their tags. See the full documentation here [site](https://osmcode.org/osmium-tool/manual.html#filtering-by-tags).
+
+```bash
+osmium tags-filter [OPTIONS] INPUT.osm.pbf TAG_FILTERS
+```
+
+- **Arguments**
+
+  - `INPUT.osm.pbf`: the source OSM file
+  
+  - `TAG_FILTERS`: one or more filters, in the form `<element>/<key>=<value>` or `<element>/<key>!=<value>`
+
+  - `<element>` is `n` (node), `w` (way), or `r` (relation)
+  
+  - `<key>` is the tag key, and `<value>` is the tag value. Use `*` as a wildcard for values
+
+#### (2) Examples and arguments
+
+```bash
+% Extract all ways with highway tags
+osmium tags-filter INPUT.osm.pbf w/highway -o OUTPUT.osm.pbf
+osmium tags-filter INPUT.osm.pbf w/highway -o OUTPUT.osm
+```
+
+Filtering syntax of `TAG_FILTERS`
+
+```bash
+% Extract only motorway, trunk, and primary highways
+w/highway=motorway,trunk,primary
+
+% Exclude multipolygon and route relations
+r/type!=multipolygon,route
+
+% Extract nodes or ways whose "name" contains "school" (case-sensitive)
+n/name=*school w/name=*School
+```
+
+Extract *driving* network (refer to `OSMnx`)
+
+```
+["highway"]
+["area"!~"yes"]
+["highway"!~"abandoned|bridleway|bus_guideway|construction|corridor|cycleway|elevator|escalator|footway|no|path|pedestrian|planned|platform|proposed|raceway|razed|service|steps|track"]
+["motor_vehicle"!~"no"]
+["motorcar"!~"no"]
+["service"!~"alley|driveway|emergency_access|parking|parking_aisle|private"]
+```
+
+```bash
+osmium tags-filter ^
+  INPUT.osm.pbf ^
+  w/highway ^
+  w/area!=yes ^
+  w/highway!=abandoned,bridleway,bus_guideway,construction,corridor,cycleway,elevator,escalator,footway,no,path,pedestrian,planned,platform,proposed,raceway,razed,service,steps,track ^
+  w/motor_vehicle!=no ^
+  w/motorcar!=no ^
+  w/service!=alley,driveway,emergency_access,parking,parking_aisle,private ^
+  -o OUTPUT.osm.pbf
+```
+
+## 2.4 Filtering OSM data by time
 
 #### (1) Download historical OSM file
 
