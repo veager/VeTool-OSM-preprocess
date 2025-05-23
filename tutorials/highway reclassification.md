@@ -3,8 +3,8 @@
 
 # 1. `OSMnx`
 
-Refer to [OSMnx](https://osmnx.readthedocs.io/en/stable/) Package, in the built-in function [osmnx
-._overpass._get_osm_filter()](https://github.com/gboeing/osmnx/blob/ef5d465448b1097a89615bd2bbaa3546a54e0f6b/osmnx/_overpass.py#L18), including six network types:
+Refer to [`OSMnx`](https://osmnx.readthedocs.io/en/stable/) Package, in the built-in function [`osmnx
+._overpass._get_osm_filter()`](https://github.com/gboeing/osmnx/blob/main/osmnx/_overpass.py), including six network types:
 
 - all
 - all_private
@@ -83,23 +83,9 @@ to download all ways, just filter out everything not currently in use or that is
 ["service"!~"private"]'
 ```
 
-## 1.2 Extract by `osmosis` Tool
+# 2. `Pyrosm`
 
-- Tutorial on `osmosis`: [site](https://www.cnblogs.com/veager/articles/16908406.html)
+Refer to [`Pyrosm`](https://pyrosm.readthedocs.io/en/stable/) Package, in the built-in function [`pyrosm.config
+.osm_filters.get_osm_filter()`](https://github.com/pyrosm/pyrosm/blob/master/pyrosm/config/osm_filters.py). 
 
-```cmd
-osmosis ^
-  --read-xml city.osm ^
-  --tf accept-ways highway=* ^
-  --tf reject-ways ^
-    area=yes ^
-    access=private ^
-    highway=abandoned,bridleway,bus_guideway,construction,corridor,cycleway,elevator,escalator,footway,path,pedestrian,planned,platform,proposed,raceway,service,steps,track ^
-    motor_vehicle=no ^
-    motorcar=no ^
-    service=alley,driveway,emergency_access,parking,parking_aisle,private ^
-  --used-node ^
-  --write-xml city-network-drive.osm
-```
-
-## 2. Reclassification 
+Based on the developer's statement, this package uses the same filters with `OSMnx`'s.
