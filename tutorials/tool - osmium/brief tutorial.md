@@ -35,7 +35,13 @@ After successful installation, the osmium executable (on Windows `osmium.exe`) i
 
 ## 2.1 OSM file formats
 
+#### (1) Format convert
 
+use `cat` command
+
+```bash
+osmium cat INPUT.osm.pbf -o OUTPUT.osm
+```
 
 ## 2.2 Geographic extraction
 
