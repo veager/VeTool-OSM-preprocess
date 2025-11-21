@@ -3,7 +3,6 @@ import networkx as nx
 from typing import Union
 
 
-
 def get_giant_component(
     graph: Union[nx.Graph, nx.DiGraph]
 ) -> Union[nx.Graph, nx.DiGraph]:
